@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.sap.ich4ls</groupId>
+        <artifactId>portal.root</artifactId>
+		<version>1911.0.1-SNAPSHOT</version>
+    </parent>
+    <artifactId>selenium.root</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>feature_tests</module>
+    </modules>
+    <distributionManagement>
+        <repository>
+            <id>leandi.nexus.milestone.repo</id>
+            <name>LeanDI Nexus Milestones Repository</name>
+            <url>http://nexus.wdf.sap.corp:8081/nexus/content/repositories/deploy.milestones</url>
+        </repository>
+        <snapshotRepository>
+            <id>leandi.nexus.snapshot.repo</id>
+            <name>LeanDI Nexus Snapshots Repository</name>
+            <url>http://nexus.wdf.sap.corp:8081/nexus/content/repositories/deploy.snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+    <repositories>
+        <repository>
+            <id>selenium root</id>
+            <name>LeanDI Nexus Snapshots Repository</name>
+            <url>http://nexus.wdf.sap.corp:8081/nexus/content/repositories/deploy.snapshots</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+</project>
