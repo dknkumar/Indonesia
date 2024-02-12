@@ -19,7 +19,7 @@ Feature: Indonesia App
       | Category         |
       | Expiry date     |
       | Provision Quantity |
-     #passed#passed#
+     #passed
 
 
   Scenario: 5.Verify the Business group filter values in Business view
