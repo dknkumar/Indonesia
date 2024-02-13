@@ -26,7 +26,7 @@ Feature: Indonesia App
       | Nutrition            |
       | Personal Care        |
 
-   #passed#
+   #passed##
 
   Scenario:  Verify the plant filter values in Provisions
 
