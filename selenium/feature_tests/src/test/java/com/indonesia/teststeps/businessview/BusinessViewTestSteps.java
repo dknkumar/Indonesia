@@ -1,24 +1,14 @@
 package com.indonesia.teststeps.businessview;
 
-import com.indonesia.SeleniumUI5TestUtil;
-import com.indonesia.objects.VerificationLog;
 import com.indonesia.pages.BusinessView.BusinessViewPage;
 import com.indonesia.pages.CommonComponentPage;
-import com.indonesia.utils.PortalDriver;
-import com.indonesia.utils.PropertyReader;
 import com.indonesia.pages.LauncherPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Properties;
 
 import static com.indonesia.pages.Page.*;
 import static org.hamcrest.CoreMatchers.is;

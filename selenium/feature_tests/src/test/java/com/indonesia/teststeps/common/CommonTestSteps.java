@@ -112,13 +112,9 @@ public class CommonTestSteps {
         loginPage.login(user);
     }
 
-    @When("^the (TI|Manage Serialization Events|SNR|GM|ONBOARDING|GenericMessaging|RM) app is clicked in the launcher page$")
-    public void clickApp(String app) throws Exception {
-        String appName = apps.getProperty(app + ".appName");
-        System.out.println(" APP Name : " + appName);
-        launcherPage.clickFioriApp(appName);
-        launcherPage.switchToFrame(app);
-    }
+
+
+
 
     @And("^the user clicks log in again$")
     public void theUserClicksLogInAgain() throws Throwable {
@@ -178,7 +174,7 @@ public class CommonTestSteps {
 
     @Then("verify file {string} is downloaded")
     public static void verifyFileIsDownloaded(String downloadFileName) throws Exception {
-        Thread.sleep(5000);
+        Thread.sleep(25000);
         PortalDriver.getInstance();
         WebDriverWait wait = new WebDriverWait(SeleniumUI5TestUtil.getConfig().getDriver(), 10);
         if (FilenameUtils.getExtension(downloadFileName).equals("xlsx")) {

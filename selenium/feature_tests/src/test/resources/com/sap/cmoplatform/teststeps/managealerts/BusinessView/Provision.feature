@@ -65,5 +65,9 @@ Feature: Indonesia App
       |>12 Months|
       |6-12 Months|
 
+ Scenario:Verify the Download button functionality by filtering business group values in Provisions
+   When click on button 'Download' on provision
+   Then User should be able to download the results in .xlsx format in an excel sheet
+   Then Downloaded data in the excel sheet must be same as showing in the Home page.
 
 

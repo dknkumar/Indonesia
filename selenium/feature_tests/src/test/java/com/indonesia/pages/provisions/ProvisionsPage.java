@@ -1,14 +1,24 @@
 package com.indonesia.pages.provisions;
 
 import com.indonesia.SeleniumUI5TestUtil;
+import com.indonesia.objects.Provisions;
 import com.indonesia.pages.Page;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static org.junit.Assert.assertEquals;
 
 public class ProvisionsPage extends Page {
 
@@ -33,6 +43,11 @@ public class ProvisionsPage extends Page {
     private By SearchboxID = By.xpath("//div[@class='svalue']//div[text()='Search']");
 
     private By DetailledView = By.xpath("//a[@href='/DetailedView']");
+
+    private By Download = By.xpath("//div//button[@class='btn-slim btn-download ml-3'][1]");
+
+    private By Database = By.xpath("//div//button[@class='btn-slim btn-download ml-3'][2]");
+    private By DownloadArrow = By.xpath("//button[@class='btn-slim btn-published  ']");
 
     private By Maximum = By.xpath("//*[@id='controlled-tab-example-tabpane-business_view']/div/div/div[2]/div/div[1]/div[2]/span[2]/span/img");
 
@@ -69,6 +84,95 @@ public class ProvisionsPage extends Page {
     public void navigateToProvisionsPage() throws Exception {
         clickElement(ProvisionsPageNavigationButton);
     }
+
+    private String filename = "";
+    public void checkDownloadFile() throws Exception {
+        List<Provisions> result = getDownloadFileContent(filename);
+        checkProvisions(result);
+    }
+
+
+    private List<Provisions> getDownloadFileContent(String downloadFileName) throws Exception {
+        List<Provisions> list = new ArrayList<>();
+        File f = null;
+        String filePath = System.getProperty("user.dir") + "\\src\\test\\resources\\testfiles\\downloadFiles\\";
+        File folder = new File(filePath);
+        File[] listOfFiles = folder.listFiles();
+        //Look for the file in the files
+        for (File listOfFile : listOfFiles) {
+            if (listOfFile.isFile()) {
+                String fileName = listOfFile.getName();
+                if (fileName.contains(downloadFileName)) {
+                    f = new File(filePath + fileName);
+                    list = readExcel(f);
+                }
+            }
+        }
+        f.delete();
+        return list;
+    }
+
+    public static List<Provisions> readExcel(File file) throws Exception {
+        List<Provisions> result = new ArrayList<>();
+        List<String> rowResult = new ArrayList<>();
+        FileInputStream stream = null;
+        XSSFWorkbook workbook = null;
+        try {
+            stream = new FileInputStream(file);
+
+            workbook = new XSSFWorkbook(stream);
+
+            Sheet sheet = workbook.getSheetAt(0);
+
+            int rowNum = sheet.getPhysicalNumberOfRows();
+            Row row = sheet.getRow(0);
+            int cellNum = row.getLastCellNum();
+
+            for (int i = 1; i < rowNum; i++) {
+                row = sheet.getRow(i);
+                Provisions Provisions = new Provisions();
+                for (int j = 0; j < cellNum; j++) {
+                    String value = row.getCell(j).toString();
+                    rowResult.add(value);
+                }
+
+                result.add(Provisions);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                stream.close();
+                workbook.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
+    }
+    public void checkProvisions(List<Provisions> orgList) throws Exception {
+        waitForPageToLoad();
+        waitForTableToLoad();
+        portalDriver.scrollToBottom(By.xpath("//*[@id='com.ich.portal.common.ui.manage.org::sap.suite.ui.generic.template.ListReport.view.ListReport::Organizations--responsiveTable-listUl']//tr"));
+        List<WebElement> tableRows = getTableRows(By.id(tableId));
+        int count = tableRows.size();
+        assertEquals(count, orgList.size());
+        for (int i = 0; i < count; i++) {
+            WebElement row = tableRows.get(i);
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+
+            Provisions org = orgList.get(i);
+            //assertTrue(cells.get(1).getText().contains(org.getSubPNID()));
+           /* assertTrue(cells.get(2).getText().contains(org.getType()));
+            assertTrue(cells.get(3).getText().contains(org.getRole()));
+            assertTrue(cells.get(4).getText().contains(org.getOnboardingType()));
+            assertTrue(cells.get(5).getText().contains(org.getInterfaceType()));
+            assertTrue(cells.get(6).getText().contains(org.getChangedOn()));
+            assertTrue(cells.get(7).getText().contains(org.getCreatedOn()));
+            assertTrue(cells.get(8).getText().contains(org.getStatus()));*/
+        }
+    }
+
 
     public boolean checkColumnDisplayonprovisions(String columnName) throws Exception {
         waitForPageToLoad();
@@ -167,6 +271,18 @@ public class ProvisionsPage extends Page {
     public void clickButtonMaximum(String maximum) throws Exception {
         waitForPageToLoad();
         clickElement(Maximum);
+    }
+
+
+    public void clickOnDownloadButton() throws Exception {
+        waitForPageToLoad();
+        clickElement(Download);
+    }
+
+    public void clickOnDownloadArrow() throws Exception {
+        waitForPageToLoad();
+        waitForTableToLoad();
+        clickElement(DownloadArrow);
     }
 
     public List<WebElement> getDropDowns1(String dropDown) throws Exception {

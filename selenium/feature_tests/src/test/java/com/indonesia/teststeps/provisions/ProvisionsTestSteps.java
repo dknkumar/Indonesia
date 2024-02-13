@@ -4,6 +4,7 @@ package com.indonesia.teststeps.provisions;
 import com.indonesia.pages.CommonComponentPage;
 import com.indonesia.pages.LauncherPage;
 import com.indonesia.pages.provisions.ProvisionsPage;
+import com.indonesia.teststeps.common.CommonTestSteps;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -26,6 +27,33 @@ public class ProvisionsTestSteps {
         provisionsPage.clickDetailledView();
         provisionsPage.navigateToProvisionsPage();
 
+    }
+
+
+    @Then("User should be able to download the results in .xlsx format in an excel sheet")
+    public void userShouldBeAbleToDownloadTheResultsInXslxFormatInAnExcelSheet() throws Exception {
+        CommonTestSteps.verifyFileIsDownloaded("detailedView_details.xlsx");
+    }
+
+    @Then("Downloaded data in the excel sheet must be same as showing in the Home page.")
+    public void downloadedDataInTheExcelSheetMustBeSameAsShowingInTheHomePage() throws Exception {
+        Thread.sleep(10000);
+        provisionsPage.checkDownloadFile();
+    }
+
+
+    @When("click on button {string} on provision")
+    public void clickOnButtonGo(String buttonName) throws Exception {
+        switch (buttonName) {
+
+            case "Download":
+                provisionsPage.clickOnDownloadButton();
+                break;
+            case "Download Arrow":
+                provisionsPage.clickOnDownloadArrow();
+                break;
+
+        }
     }
 
     @Then("Verify all the filters are present on provisions")
