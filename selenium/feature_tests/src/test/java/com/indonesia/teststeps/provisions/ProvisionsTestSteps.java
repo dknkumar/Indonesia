@@ -35,6 +35,11 @@ public class ProvisionsTestSteps {
         CommonTestSteps.verifyFileIsDownloaded("detailedView_details.xlsx");
     }
 
+    @Then("User should be able to download the dataBase results in .xlsx format in an excel sheet")
+    public void userShouldBeAbleToDownloadTheDataBaseResultsInXslxFormatInAnExcelSheet() throws Exception {
+        CommonTestSteps.verifyFileIsDownloaded("DataBase_details.xlsx");
+    }
+
     @Then("Downloaded data in the excel sheet must be same as showing in the Home page.")
     public void downloadedDataInTheExcelSheetMustBeSameAsShowingInTheHomePage() throws Exception {
         Thread.sleep(10000);
@@ -49,8 +54,8 @@ public class ProvisionsTestSteps {
             case "Download":
                 provisionsPage.clickOnDownloadButton();
                 break;
-            case "Download Arrow":
-                provisionsPage.clickOnDownloadArrow();
+            case "DataBase":
+                provisionsPage.clickOnDataBaseButton();
                 break;
 
         }

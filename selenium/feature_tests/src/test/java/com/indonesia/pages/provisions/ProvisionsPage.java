@@ -22,6 +22,9 @@ import static org.junit.Assert.assertEquals;
 
 public class ProvisionsPage extends Page {
 
+    private final String tableId = "body-container  body-container-table-with-pagination waste_risk_details_page";
+
+
     private By SKUID = By.xpath("//*[@id='sku']");
     private By DescriptionID = By.xpath("//*[@id='description'][@type='text']");
 
@@ -46,7 +49,7 @@ public class ProvisionsPage extends Page {
 
     private By Download = By.xpath("//div//button[@class='btn-slim btn-download ml-3'][1]");
 
-    private By Database = By.xpath("//div//button[@class='btn-slim btn-download ml-3'][2]");
+    private By DataBase = By.xpath("//div//button[@class='btn-slim btn-download ml-3'][2]");
     private By DownloadArrow = By.xpath("//button[@class='btn-slim btn-published  ']");
 
     private By Maximum = By.xpath("//*[@id='controlled-tab-example-tabpane-business_view']/div/div/div[2]/div/div[1]/div[2]/span[2]/span/img");
@@ -150,10 +153,12 @@ public class ProvisionsPage extends Page {
         }
         return result;
     }
+
+
     public void checkProvisions(List<Provisions> orgList) throws Exception {
         waitForPageToLoad();
         waitForTableToLoad();
-        portalDriver.scrollToBottom(By.xpath("//*[@id='com.ich.portal.common.ui.manage.org::sap.suite.ui.generic.template.ListReport.view.ListReport::Organizations--responsiveTable-listUl']//tr"));
+        //portalDriver.scrollToBottom(By.xpath("//*[@id='com.ich.portal.common.ui.manage.org::sap.suite.ui.generic.template.ListReport.view.ListReport::Organizations--responsiveTable-listUl']//tr"));
         List<WebElement> tableRows = getTableRows(By.id(tableId));
         int count = tableRows.size();
         assertEquals(count, orgList.size());
@@ -279,10 +284,10 @@ public class ProvisionsPage extends Page {
         clickElement(Download);
     }
 
-    public void clickOnDownloadArrow() throws Exception {
+    public void clickOnDataBaseButton() throws Exception {
         waitForPageToLoad();
         waitForTableToLoad();
-        clickElement(DownloadArrow);
+        clickElement(DataBase);
     }
 
     public List<WebElement> getDropDowns1(String dropDown) throws Exception {

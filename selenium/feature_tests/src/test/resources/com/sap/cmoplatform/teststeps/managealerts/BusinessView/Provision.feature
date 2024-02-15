@@ -65,9 +65,30 @@ Feature: Indonesia App
       |>12 Months|
       |6-12 Months|
 
- Scenario:Verify the Download button functionality by filtering business group values in Provisions
+  Scenario Outline:Verify the Download button functionality by filtering business group values in Provisions
+    And Select the column <column> '<value>' value
+    When click on button 'Download' on provision
+    Then User should be able to download the results in .xlsx format in an excel sheet
+  #Then Downloaded data in the excel sheet must be same as showing in the Home page.
+    Examples:
+      | column         | value     |
+      | Business Group | Home Care |
+
+ Scenario: Verify the Download button functionality without filtering the values
    When click on button 'Download' on provision
    Then User should be able to download the results in .xlsx format in an excel sheet
-   Then Downloaded data in the excel sheet must be same as showing in the Home page.
+  #Then Downloaded data in the excel sheet must be same as showing in the Home page.
+
+  Scenario Outline:Verify the DataBase button functionality by filtering business group values in Provisions
+    And Select the column <column> '<value>' value
+    When click on button 'DataBase' on provision
+    Then User should be able to download the dataBase results in .xlsx format in an excel sheet
+  #Then Downloaded data in the excel sheet must be same as showing in the Home page.
+    Examples:
+      | column         | value     |
+      | Business Group | Home Care |
+
+    Scenario: Verify the Page Navigation.
+
 
 
