@@ -3,11 +3,11 @@ Feature: Indonesia App
 
   Background:
     Given the user logs in as 'Indonesia' in the login page
-#     And the DetailedView tab is opened
+        # And the DetailedView tab is opened
   Then click on DetailledView and provisions
-# And the Summary tab is opened
+        # And the Summary tab is opened
 
-  Scenario: Verify the Global Filters of provisions in Detailed view screen
+  Scenario:1.Verify the Global Filters of provisions in Detailed view screen
     Then Verify all the filters are present on provisions
       | Business Group  |
       | Plant           |
@@ -15,10 +15,9 @@ Feature: Indonesia App
       | Expiry date     |
       | Loss Tree       |
 
-  Scenario: Verify the Business group filter values in Provisions
+  Scenario:2.Verify the Business group filter values in Provisions
 
     Then <"Business Group"> should have following drop-down values
-
       | Select all           |
       | Beauty & Wellbeing   |
       | Home Care            |
@@ -28,7 +27,7 @@ Feature: Indonesia App
 
    #passed##
 
-  Scenario:  Verify the plant filter values in Provisions
+  Scenario: 3.Verify the plant filter values in Provisions
 
     Then <"Plant"> should have following drop-down values
       | Select all     |
@@ -39,7 +38,7 @@ Feature: Indonesia App
       | 9006           |
      #passed#
 
-  Scenario: Verify the Category filter values in Provisions
+  Scenario:4.Verify the Category filter values in Provisions
 
     Then <"Category filter"> should have following drop-down values
       |Select all           |
@@ -58,14 +57,21 @@ Feature: Indonesia App
 
     #passed#
 
-  Scenario: Verify the Expiry date (Categorical- <6mos, 6mos-12mos, >12 mos) filter values in Provisions
+  Scenario:5.Verify the Expiry date (Categorical- <6mos, 6mos-12mos, >12 mos) filter values in Provisions
     Then <"Expiry date"> should have following drop-down values
       |Select all|
       |<6 Months |
       |>12 Months|
       |6-12 Months|
 
-  Scenario Outline:Verify the Download button functionality by filtering business group values in Provisions
+  Scenario:6.Verify the Loss Tree filter values in Business view
+    Then <"Loss Tree"> should have following drop-down values
+      |Select all      |
+      |Exclude         |
+      |Liquidate - Export|
+      |Liquidate - ULI  |
+
+  Scenario Outline:7.Verify the Download button functionality by filtering business group values in Provisions
     And Select the column <column> '<value>' value
     When click on button 'Download' on provision
     Then User should be able to download the results in .xlsx format in an excel sheet
@@ -74,21 +80,26 @@ Feature: Indonesia App
       | column         | value     |
       | Business Group | Home Care |
 
- Scenario: Verify the Download button functionality without filtering the values
+ Scenario:8.Verify the Download button functionality without filtering the values
    When click on button 'Download' on provision
    Then User should be able to download the results in .xlsx format in an excel sheet
   #Then Downloaded data in the excel sheet must be same as showing in the Home page.
 
-  Scenario Outline:Verify the DataBase button functionality by filtering business group values in Provisions
+  Scenario:9.Verify the DataBase button functionality by without filtering business group values in Provisions
+    When click on button 'DataBase' on provision
+    Then User should be able to download the dataBase results in .xlsx format in an excel sheet
+
+  Scenario Outline:10.Verify the DataBase button functionality by filtering business group values in Provisions
     And Select the column <column> '<value>' value
     When click on button 'DataBase' on provision
     Then User should be able to download the dataBase results in .xlsx format in an excel sheet
-  #Then Downloaded data in the excel sheet must be same as showing in the Home page.
+#   Then Downloaded data in the excel sheet must be same as showing in the Home page.
     Examples:
       | column         | value     |
       | Business Group | Home Care |
 
-    Scenario: Verify the Page Navigation.
+    Scenario11.Verify the Page Navigation.
+
 
 
 

@@ -258,6 +258,7 @@ public class BusinessViewPage extends Page {
         getElement(NameID).sendKeys("Bidding");
         clickElement(Save);
     }
+
     public void selectcheckbox(String filtercheckbox) throws Exception {
         clickElement(By.xpath("//*[@title='Toggle Row Selected'][1]"));
     }

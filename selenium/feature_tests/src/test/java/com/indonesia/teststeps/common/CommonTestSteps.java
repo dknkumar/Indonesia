@@ -174,7 +174,7 @@ public class CommonTestSteps {
 
     @Then("verify file {string} is downloaded")
     public static void verifyFileIsDownloaded(String downloadFileName) throws Exception {
-        Thread.sleep(25000);
+        Thread.sleep(50000);
         PortalDriver.getInstance();
         WebDriverWait wait = new WebDriverWait(SeleniumUI5TestUtil.getConfig().getDriver(), 10);
         if (FilenameUtils.getExtension(downloadFileName).equals("xlsx")) {
