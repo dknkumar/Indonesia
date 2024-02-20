@@ -215,7 +215,7 @@ public class Config {
 
     public ChromeDriver getDriver() {
         return driver;
-    }
+     }
 
     private void setDriver(ChromeDriver driver) {
         this.driver = driver;
@@ -233,7 +233,7 @@ public class Config {
         return veryShortInterval;
     }
 
-    int getShortInterval() {
+    public int getShortInterval() {
         return shortInterval;
     }
 

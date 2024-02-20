@@ -9,9 +9,12 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
+import static com.indonesia.SeleniumUI5TestUtil.getConfig;
 import static com.indonesia.pages.Page.getElement;
 import static com.indonesia.pages.Page.waitForPageToLoad;
 import static org.junit.Assert.assertTrue;
@@ -28,6 +31,22 @@ public class ProvisionsTestSteps {
         provisionsPage.navigateToProvisionsPage();
 
     }
+    @And("scrollToElement1")
+    public void scrollToElement1() throws Exception {
+        JavascriptExecutor js = getConfig().getDriver();
+        js.executeScript("window.scrollBy(0,7000)");
+//        for (int i = 0; i < 10; i++) {
+//            Thread.sleep(getConfig().getShortInterval());
+//            js.executeScript("arguments[0].scrollIntoView(true);", element);
+//        }
+    }
+
+
+    @And("Verify the Page Navigation and Pagenumber selection")
+    public void VerifythePageNavigationFirstLastNextPreviousPagenumberselection() throws Exception {
+        provisionsPage.clicknavigation();
+    }
+
 
 
     @Then("User should be able to download the results in .xlsx format in an excel sheet")

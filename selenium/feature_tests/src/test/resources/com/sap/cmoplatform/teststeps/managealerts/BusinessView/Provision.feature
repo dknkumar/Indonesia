@@ -83,7 +83,7 @@ Feature: Indonesia App
  Scenario:8.Verify the Download button functionality without filtering the values
    When click on button 'Download' on provision
    Then User should be able to download the results in .xlsx format in an excel sheet
-  #Then Downloaded data in the excel sheet must be same as showing in the Home page.
+  Then Downloaded data in the excel sheet must be same as showing in the Home page.
 
   Scenario:9.Verify the DataBase button functionality by without filtering business group values in Provisions
     When click on button 'DataBase' on provision
@@ -98,8 +98,170 @@ Feature: Indonesia App
       | column         | value     |
       | Business Group | Home Care |
 
-    Scenario11.Verify the Page Navigation.
+    Scenario:11.Verify the Page Navigation.
+    And scrollToElement1
+    And Verify the Page Navigation and Pagenumber selection
 
+#================================================================================
+  Scenario Outline:1.Verify the Business group filter:Ice Cream
+    And Select the column <column> '<value>' value
+    Then <"Plant"> should have following drop-down values
+      |9002|
+      |9016|
+    Then <"Category filter"> should have following drop-down values
+      |Ice Cream Category|
+    Then <"Expiry date"> should have following drop-down values
+      | Select all|
+      | <6 Months|
+      | >12 Months|
+      |6-12 Months|
+    When click on button 'Maximum'
+    Then Results should be displayed according to the Filter '<value>' selected
+    Examples:
+      | column | value  |
+      | Business Group | Ice Cream|
 
+  Scenario Outline:2.Verify the Plant filter:Ex: 9000
+    And Select the column <column> '<value>' value
+    Then <"Business Group"> should have following drop-down values
+      |Home Care|
+    Then <"Category filter"> should have following drop-down values
+      |Fabric Cleaning|
+    Then <"Expiry Date"> should have following drop-down values
+      | >12 Months|
+    When click on button 'Maximum'
+    Then Results should be displayed according to the Filter '<value>' selected
+    Examples:
+      | column | value  |
+      | Plant | 9000|
+
+  Scenario Outline:3.Verify the Category filter:Beverages
+    And Select the column <column> '<value>' value
+    Then <"Expiry Date"> should have following drop-down values
+      |Select all|
+      |<6 Months|
+      |>12 Months|
+      |6-12 Months|
+    Then <"Plant"> should have following drop-down values
+      |Select all|
+      |9001      |
+      |9150      |
+      |9153      |
+      |9154      |
+    Then <"Business Group"> should have following drop-down values
+      |Nutrition|
+    When click on button 'Maximum'
+    Then Results should be displayed according to the Filter '<value>' selected
+    Examples:
+      | column          | value  |
+      | Category filter | Beverages|
+
+  Scenario Outline: 4.Verify the Expiry Date filter:Ex: <6 months
+    And Select the column <column> '<value>' value
+    Then <"Plant"> should have following drop-down values
+      |Select all|
+      |9000      |
+      |9001      |
+      |9003      |
+      |9006      |
+      |9110      |
+      |9150       |
+      |9153       |
+
+    Then <"Category filter"> should have following drop-down values
+      |Select all|
+      |Beverages |
+      |Skin Cleansing|
+
+    Then <"Business Group"> should have following drop-down values
+      |Select all|
+      |Home Care|
+      |Ice Cream|
+      |Nutrition|
+      |Personal Care|
+#    When click on button 'Maximum'
+#    Then Results should be displayed according to the Filter '<value>' selected
+    Examples:
+      | column | value  |
+      | Expiry date| <6 Months|
+
+   ####### ///////////////////############################
+
+  Scenario Outline:5.Verify the Business group filter:Home Care
+    And Select the column <column> '<value>' value
+
+    Then <"Plant"> should have following drop-down values
+      |9000|
+      |9110|
+      |9150|
+      |9153|
+      |9154|
+    Then <"Expiry date"> should have following drop-down values
+      |Select all|
+      | <6 Months|
+      | >12 Months|
+      |6-12 Months|
+    Then <"Category filter"> should have following drop-down values
+      |Select all|
+      |Fabric Cleaning|
+      |Fabric Enhancers |
+      |Home & Hygiene   |
+      |Professional Cleaning Category|
+    When click on button 'Maximum'
+    Then Results should be displayed according to the Filter '<value>' selected
+    Examples:
+      | column | value  |
+      | Business Group | Home Care|
+
+  Scenario Outline:6.Verify the Category filter:Hair care
+    And Select the column <column> '<value>' value
+    Then <"Expiry Date"> should have following drop-down values
+      |Select all|
+      |<6 Months|
+      |>12 Months|
+      |6-12 Months|
+    Then <"Plant"> should have following drop-down values
+      |Select all|
+      |9003      |
+      |9150      |
+      |9153      |
+      |9154      |
+    Then <"Business Group"> should have following drop-down values
+      |Beauty & Wellbeing|
+    When click on button 'Maximum'
+    Then Results should be displayed according to the Filter '<value>' selected
+    Examples:
+      | column          | value  |
+      | Category filter | Hair care|
+
+  Scenario Outline: 7.Verify the Expiry Date filter1:Ex: >12 months
+    And Select the column <column> '<value>' value
+    Then <"Plant"> should have following drop-down values
+      |Select all|
+      |9000      |
+      |9001      |
+      |9003      |
+      |9006      |
+      |9016     |
+      |9110      |
+
+    Then <"Category filter"> should have following drop-down values
+      |Select all|
+      |Beverages |
+      |Skin Cleansing|
+
+    Then <"Business Group"> should have following drop-down values
+      |Select all|
+      |Beauty & Wellbeing|
+      |Home Care|
+      |Ice Cream|
+      |Nutrition|
+      |Personal Care|
+#    When click on button 'Maximum'
+#    Then Results should be displayed according to the Filter '<value>' selected
+    Examples:
+      | column | value  |
+      | Expiry date| >12 Months|
+#    ===================================================================================
 
 

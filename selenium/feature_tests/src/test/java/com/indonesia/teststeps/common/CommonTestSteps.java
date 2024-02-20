@@ -28,16 +28,16 @@ import java.util.Properties;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertThat;
 
-public class CommonTestSteps {
+public  class CommonTestSteps {
 
     private final LoginPage loginPage = new LoginPage();
     private static final LauncherPage launcherPage = new LauncherPage();
     private final GoodbyePage goodbyePage = new GoodbyePage();
     private final GenericPage genericPage = new GenericPage();
-//    private final ManageCustomizingPage manageCustomizingPage = new ManageCustomizingPage();
     private final Properties apps = PropertyReader.loadProperties("Apps.properties");
     private static final String script = "(()=> { if (!window.automationTestTimeStamp) { const div = document.createElement('div'); div.setAttribute(\"style\", \"position: fixed;top:0px; left: 300px; color: red\"); setInterval(() => { let date = new Date;let strDate = date.toString(); strDate = \"Date=\".concat(strDate); let url = window.location.host; let strURL = url.toString(); strURL = \",HOST=\".concat(strURL); div.innerText = strDate.concat(strURL); }, 50); document.body.appendChild(div); window.automationTestTimeStamp = true; }})();";
 
@@ -48,8 +48,6 @@ public class CommonTestSteps {
 
     @Before
     public void setup() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless=new");
         SeleniumUI5TestUtil.getConfig().getDriver();
         PortalDriver.getInstance().openUrl();
     }
@@ -112,19 +110,23 @@ public class CommonTestSteps {
         loginPage.login(user);
     }
 
-
-
-
+    @When("^the (TI|Manage Serialization Events|SNR|GM|ONBOARDING|GenericMessaging|RM) app is clicked in the launcher page$")
+    public void clickApp(String app) throws Exception {
+        String appName = apps.getProperty(app + ".appName");
+        System.out.println(" APP Name : " + appName);
+        launcherPage.clickFioriApp(appName);
+        launcherPage.switchToFrame(app);
+    }
 
     @And("^the user clicks log in again$")
     public void theUserClicksLogInAgain() throws Throwable {
         goodbyePage.logBackOn();
     }
 
-//    @Then("^the '(.+)' app is not available in the launcher page$")
-//    public void theOnboardingAppIsNotAvailable(String appName) throws Exception {
-//        assertThat(launcherPage.isAppAvailable(appName), is(false));
-//    }
+    @Then("^the '(.+)' app is not available in the launcher page$")
+    public void theOnboardingAppIsNotAvailable(String appName) throws Exception {
+        assertThat(launcherPage.isAppAvailable(appName), is(false));
+    }
 
     @And("^the button labeled (Detailed View|ERV|Business View|Provisions|Yes|No|OK|Cancel|Send|Save Draft|Create|Save & Send|Add|Cancel|Save|Go|Adjust Request|New Upload|Upload|Upload to Lookup Directory|Close|Delete|Edit|New Message|Sign in again|Adapt Filters|Change Log|Hide Filter Bar|Change Status|Save As) is clicked$")
     public void theButtonLabeledOKIsClicked(String button) throws Exception {
@@ -160,10 +162,10 @@ public class CommonTestSteps {
         genericPage.signOutButton();
     }
 
-//    @Then("^the (Onboarding|Generic Messaging|Trade Items|Relationship Manager|Serialization Events Management|Serial Number Requests) app is available in the launcher page$")
-//    public void isAvailableInTheLauncherPage(String appName) throws Exception {
-//        assertThat(launcherPage.isAppAvailable(appName), is(true));
-//    }
+    @Then("^the (Onboarding|Generic Messaging|Trade Items|Relationship Manager|Serialization Events Management|Serial Number Requests) app is available in the launcher page$")
+    public void isAvailableInTheLauncherPage(String appName) throws Exception {
+        assertThat(launcherPage.isAppAvailable(appName), is(true));
+    }
 
     @When("^the (DetailedView|ERV|Summary) app is clicked in the Indonesia launcher page$")
     public void clickUsscApp(String app) throws Exception {
@@ -174,7 +176,7 @@ public class CommonTestSteps {
 
     @Then("verify file {string} is downloaded")
     public static void verifyFileIsDownloaded(String downloadFileName) throws Exception {
-        Thread.sleep(50000);
+        Thread.sleep(5000);
         PortalDriver.getInstance();
         WebDriverWait wait = new WebDriverWait(SeleniumUI5TestUtil.getConfig().getDriver(), 10);
         if (FilenameUtils.getExtension(downloadFileName).equals("xlsx")) {
@@ -295,6 +297,9 @@ public class CommonTestSteps {
             }
         });
     }
+
+
+
 
 
 }

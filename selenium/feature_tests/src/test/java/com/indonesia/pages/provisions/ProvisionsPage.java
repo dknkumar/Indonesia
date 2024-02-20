@@ -3,11 +3,16 @@ package com.indonesia.pages.provisions;
 import com.indonesia.SeleniumUI5TestUtil;
 import com.indonesia.objects.Provisions;
 import com.indonesia.pages.Page;
+import com.indonesia.utils.PortalDriver;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
+import org.openqa.selenium.chrome.ChromeDriver;
+
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
@@ -18,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.indonesia.SeleniumUI5TestUtil.getConfig;
 import static org.junit.Assert.assertEquals;
 
 public class ProvisionsPage extends Page {
@@ -72,7 +78,7 @@ public class ProvisionsPage extends Page {
     private By ERVPageNavigationButton = By.xpath("//ul//li//div[text()='ERV']");
     private By BusinessViewPageNavigationButton = By.xpath("//*[@class='nav-item' and @role='presentation'][1]");
     private By ProvisionsPageNavigationButton = By.xpath("//*[@class='nav-item' and @role='presentation'][2]");
-    Actions actions = new Actions(SeleniumUI5TestUtil.getConfig().getDriver());
+    Actions actions = new Actions(getConfig().getDriver());
 
     public void navigateToDetailedViewPage() throws Exception {
         clickElement(DetailedViewPageNavigationButton);
@@ -82,7 +88,34 @@ public class ProvisionsPage extends Page {
         clickElement(ERVPageNavigationButton);
     }
 
+    int getShortInterval() {
+        return shortInterval;
+    }
+    private final int shortInterval = 100;
 
+    public void clicknavigation() throws Exception {
+//        waitForPageToLoad();
+//       // scrollToElement(By.id("window.scrollBy(0,6000)"));
+//        JavascriptExecutor js = (JavascriptExecutor) portalDriver;
+////        //js.executeScript("window.scrollBy(0,3000)");
+////        //Thread.sleep(2000);
+//       js.executeScript("window.scrollBy(0,6000)");
+//        //Thread.sleep(5000);
+////        WebDriver WebDriver = null;
+////        Actions actions = new Actions(WebDriver);
+////        actions.ScrollByAmount(0,2000).perfom();
+//      //  js.executeScript("arguments[0].scrollIntoView(true);", element);
+
+        waitForPageToLoad();
+       //clickElement(By.xpath("//div//li//a[@href='#'][text()='2']"));
+        clickElement(By.xpath("//*[@id='controlled-tab-example-tabpane-business_view']/div/div/div[2]/div/div[3]/div[2]/ul/div/li[7]/a/span[1]"));
+//        waitForPageToLoad();
+        clickElement(By.xpath("//*[@id='controlled-tab-example-tabpane-business_view']/div/div/div[2]/div/div[3]/div[2]/ul/div/li[6]/a/span[1]"));
+        clickElement(By.xpath("//*[@id='controlled-tab-example-tabpane-business_view']/div/div/div[2]/div/div[3]/div[2]/ul/div/li[2]"));
+//        waitForPageToLoad();
+        clickElement(By.xpath("//*[@id='controlled-tab-example-tabpane-business_view']/div/div/div[2]/div/div[3]/div[2]/ul/div/li[1]"));
+//
+    }
 
     public void navigateToProvisionsPage() throws Exception {
         clickElement(ProvisionsPageNavigationButton);
@@ -403,7 +436,7 @@ public class ProvisionsPage extends Page {
         for (int i = 0; i < count; i++) {
             String text = getElements(By.xpath("//*[@id='controlled-tab-example-tabpane-business_view']/div/div/div[2]/div/div[3]/div[1]/div/div[2]/div/div[3]/span")).get(i).getText();
             System.out.println(text);
-            Assert.assertEquals(Description, text);
+            assertEquals(Description, text);
         }
     }
 
@@ -413,7 +446,7 @@ public class ProvisionsPage extends Page {
         for (int i = 0; i < count; i++) {
             String text = getElements(By.xpath("//*[@id='controlled-tab-example-tabpane-business_view']/div/div/div[2]/div/div[3]/div[1]/div/div[2]/div[1]/div[4]/span")).get(i).getText();
             System.out.println(text);
-            Assert.assertEquals(Plant, text);
+            assertEquals(Plant, text);
         }
     }
 
@@ -424,7 +457,7 @@ public class ProvisionsPage extends Page {
         for (int i = 0; i < count; i++) {
             String text = getElements(By.xpath("//*[@id='controlled-tab-example-tabpane-business_view']/div/div/div[2]/div/div[3]/div[1]/div/div[2]/div[1]/div[6]/span")).get(i).getText();
             System.out.println(text);
-            Assert.assertEquals(BatchLot, text);
+            assertEquals(BatchLot, text);
         }
     }
 
@@ -435,7 +468,7 @@ public class ProvisionsPage extends Page {
         for (int i = 0; i < count; i++) {
             String text = getElements(By.xpath("//*[@id='controlled-tab-example-tabpane-business_view']/div/div/div[2]/div/div[3]/div[1]/div/div[2]/div[1]/div[11]/span")).get(i).getText();
             System.out.println(text);
-            Assert.assertEquals(category, text);
+            assertEquals(category, text);
         }
     }
 
@@ -446,7 +479,7 @@ public class ProvisionsPage extends Page {
         for (int i = 0; i < count; i++) {
             String text = getElements(By.xpath("//*[@id='controlled-tab-example-tabpane-business_view']/div/div/div[2]/div/div[3]/div[1]/div/div[2]/div[1]/div[5]/span")).get(i).getText();
             System.out.println(text);
-            Assert.assertEquals(category, text);
+            assertEquals(category, text);
         }
     }
 
@@ -459,7 +492,7 @@ public class ProvisionsPage extends Page {
         for (int i = 0; i < count; i++) {
             String text = getElements(By.xpath("//*[@id='controlled-tab-example-tabpane-business_view']/div/div/div[2]/div/div[3]/div[1]/div/div[1]/div/div[4]")).get(i).getText();
             System.out.println(text);
-            Assert.assertEquals(value, text);
+            assertEquals(value, text);
         }
     }
 
@@ -469,7 +502,7 @@ public class ProvisionsPage extends Page {
         for (int i = 0; i < count; i++) {
             String text = getElements(By.xpath("//div[@class='upose-select__menu-list upose-select__menu-list--is-multi css-qr46ko']")).get(i).getText();
             System.out.println(text);
-            Assert.assertEquals(columns, text);
+            assertEquals(columns, text);
         }
     }
 
@@ -479,7 +512,7 @@ public class ProvisionsPage extends Page {
         for (int i = 0; i < count; i++) {
             String text = getElements(By.xpath("//*[@id='controlled-tab-example-tabpane-business_view']/div/div/div[2]/div/div[3]/div[1]/div/div[2]/div/div[2]/span")).get(i).getText();
             System.out.println(text);
-            Assert.assertEquals(SKU, text);
+            assertEquals(SKU, text);
         }
     }
 
