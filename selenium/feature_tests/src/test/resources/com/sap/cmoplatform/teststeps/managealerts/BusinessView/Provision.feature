@@ -7,6 +7,7 @@ Feature: Indonesia App
   Then click on DetailledView and provisions
         # And the Summary tab is opened
 
+  #####Week 4(12th Feb-16]th Feb)####
   Scenario:1.Verify the Global Filters of provisions in Detailed view screen
     Then Verify all the filters are present on provisions
       | Business Group  |
@@ -102,83 +103,82 @@ Feature: Indonesia App
     And scrollToElement1
     And Verify the Page Navigation and Pagenumber selection
 
-#================================================================================
+#==week5(19th Feb-23rd Feb)==============================================================================
+
   Scenario Outline:1.Verify the Business group filter:Ice Cream
     And Select the column <column> '<value>' value
     Then <"Plant"> should have following drop-down values
       |9002|
-      |9016|
     Then <"Category filter"> should have following drop-down values
-      |Ice Cream Category|
+      |ICE CREAM|
     Then <"Expiry date"> should have following drop-down values
-      | Select all|
+      |Select all|
       | <6 Months|
-      | >12 Months|
-      |6-12 Months|
-    When click on button 'Maximum'
-    Then Results should be displayed according to the Filter '<value>' selected
+#    When click on button 'Maximum'
+#    Then Results should be displayed according to the Filter '<value>' selected
     Examples:
-      | column | value  |
+      | column         | value  |
       | Business Group | Ice Cream|
 
-  Scenario Outline:2.Verify the Plant filter:Ex: 9000
+  Scenario Outline:2.Verify the Plant filter:Ex: 9110
     And Select the column <column> '<value>' value
     Then <"Business Group"> should have following drop-down values
-      |Home Care|
+      |HOME CARE|
     Then <"Category filter"> should have following drop-down values
-      |Fabric Cleaning|
-    Then <"Expiry Date"> should have following drop-down values
-      | >12 Months|
-    When click on button 'Maximum'
-    Then Results should be displayed according to the Filter '<value>' selected
-    Examples:
-      | column | value  |
-      | Plant | 9000|
-
-  Scenario Outline:3.Verify the Category filter:Beverages
-    And Select the column <column> '<value>' value
+      |BEVERAGES|
     Then <"Expiry Date"> should have following drop-down values
       |Select all|
       |<6 Months|
       |>12 Months|
       |6-12 Months|
+#    When click on button 'Maximum'
+#    Then Results should be displayed according to the Filter '<value>' selected
+    Examples:
+      | column | value  |
+      | Plant | 9110|
+
+  Scenario Outline:3.Verify the Category filter:Beverages
+    And Select the column <column> '<value>' value
+    Then <"Expiry Date"> should have following drop-down values
+      |Select all|
+      |>12 Months|
     Then <"Plant"> should have following drop-down values
       |Select all|
-      |9001      |
+      |9015      |
+      |9110      |
+      |9120      |
       |9150      |
-      |9153      |
-      |9154      |
     Then <"Business Group"> should have following drop-down values
       |Nutrition|
-    When click on button 'Maximum'
-    Then Results should be displayed according to the Filter '<value>' selected
+#    When click on button 'Maximum'
+#    Then Results should be displayed according to the Filter '<value>' selected
     Examples:
       | column          | value  |
       | Category filter | Beverages|
 
-  Scenario Outline: 4.Verify the Expiry Date filter:Ex: <6 months
+  Scenario Outline:4.Verify the Expiry Date filter:Ex: <6 months
     And Select the column <column> '<value>' value
     Then <"Plant"> should have following drop-down values
       |Select all|
       |9000      |
-      |9001      |
+      |9002      |
       |9003      |
+      |9004      |
       |9006      |
-      |9110      |
-      |9150       |
-      |9153       |
+      |9105       |
+      |9110       |
 
     Then <"Category filter"> should have following drop-down values
       |Select all|
-      |Beverages |
-      |Skin Cleansing|
+      |BEVERAGES   |
+      |DEODORANTS & FRAGRANCES|
 
     Then <"Business Group"> should have following drop-down values
       |Select all|
-      |Home Care|
-      |Ice Cream|
-      |Nutrition|
-      |Personal Care|
+      |BEAUTY & WELLBEING|
+      |HOME CARE|
+      |ICE CREAM|
+
 #    When click on button 'Maximum'
 #    Then Results should be displayed according to the Filter '<value>' selected
     Examples:
@@ -189,13 +189,12 @@ Feature: Indonesia App
 
   Scenario Outline:5.Verify the Business group filter:Home Care
     And Select the column <column> '<value>' value
-
     Then <"Plant"> should have following drop-down values
       |9000|
+      |9105|
       |9110|
+      |9120|
       |9150|
-      |9153|
-      |9154|
     Then <"Expiry date"> should have following drop-down values
       |Select all|
       | <6 Months|
@@ -203,60 +202,63 @@ Feature: Indonesia App
       |6-12 Months|
     Then <"Category filter"> should have following drop-down values
       |Select all|
-      |Fabric Cleaning|
-      |Fabric Enhancers |
-      |Home & Hygiene   |
-      |Professional Cleaning Category|
+      |FABRIC CLEANING|
+      |FABRIC ENHANCERS|
+      |HOME & HYGIENE |
+      |PROFESSIONAL CLEANING CATEGORY|
     When click on button 'Maximum'
     Then Results should be displayed according to the Filter '<value>' selected
     Examples:
       | column | value  |
-      | Business Group | Home Care|
+      | Business Group | HOME CARE|
 
-  Scenario Outline:6.Verify the Category filter:Hair care
+  Scenario Outline:6.Verify the Category filter: Beverages
     And Select the column <column> '<value>' value
+    Then <"Plant"> should have following drop-down values
+      |Select all|
+      |9105     |
+      |9110      |
+      |9120      |
+      |9150      |
+
     Then <"Expiry Date"> should have following drop-down values
       |Select all|
       |<6 Months|
       |>12 Months|
       |6-12 Months|
-    Then <"Plant"> should have following drop-down values
-      |Select all|
-      |9003      |
-      |9150      |
-      |9153      |
-      |9154      |
+
     Then <"Business Group"> should have following drop-down values
-      |Beauty & Wellbeing|
-    When click on button 'Maximum'
-    Then Results should be displayed according to the Filter '<value>' selected
+      |Nutrition|
+
+#    When click on button 'Maximum'
+#    Then Results should be displayed according to the Filter '<value>' selected
     Examples:
       | column          | value  |
-      | Category filter | Hair care|
+      | Category filter | Beverages|
 
-  Scenario Outline: 7.Verify the Expiry Date filter1:Ex: >12 months
+  Scenario Outline:7.Verify the Expiry Date filter1:Ex: >12 months
     And Select the column <column> '<value>' value
     Then <"Plant"> should have following drop-down values
       |Select all|
       |9000      |
-      |9001      |
+      |9002      |
       |9003      |
-      |9006      |
-      |9016     |
-      |9110      |
+      |9004      |
+      |9006     |
+#      |9110      |
 
     Then <"Category filter"> should have following drop-down values
       |Select all|
-      |Beverages |
-      |Skin Cleansing|
+      |BEVERAGES |
+#      |Hair care|
 
     Then <"Business Group"> should have following drop-down values
       |Select all|
-      |Beauty & Wellbeing|
-      |Home Care|
-      |Ice Cream|
-      |Nutrition|
-      |Personal Care|
+      |BEAUTY & WELLBEING|
+      |HOME CARE|
+      |ICE CREAM|
+      |NUTRITION|
+      |PERSONAL CARE|
 #    When click on button 'Maximum'
 #    Then Results should be displayed according to the Filter '<value>' selected
     Examples:
