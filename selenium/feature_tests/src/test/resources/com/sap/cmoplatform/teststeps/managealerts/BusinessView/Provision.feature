@@ -5,7 +5,7 @@ Feature: Indonesia App
     Given the user logs in as 'Indonesia' in the login page
         # And the DetailedView tab is opened
   Then click on DetailledView and provisions
-        # And the Summary tab is opened
+        # And the Summary tab is openedd
 
   #####Week 4(12th Feb-16]th Feb)####
   Scenario:1.Verify the Global Filters of provisions in Detailed view screen
