@@ -183,7 +183,7 @@ Feature: Indonesia App
   Scenario Outline:16.Verify the search functionality of SKU column of business view table
     And the '<SKU>' is entered into the SKU filter in BusinessView page
     Then verify the '<SKU>' must be present in column1
-#    Then Results should be displayed according to the Filter '<value>' selected
+#   # Then Results should be displayed according to the Filter '<value>' selected
 
     Examples:
       | SKU     |
