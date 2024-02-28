@@ -172,6 +172,7 @@ public class BusinessViewTestSteps {
     @And("the {string} is entered into the QtyProv filter in BusinessView page")
     public void theQtyProvIsEnteredIntoTheQtyProvFilterInSNRPage(String QtyProv) throws Exception {
         businessViewPage.enterQtyProv(QtyProv);
+//        businessViewPage.enterQtyProv1();
     }
 
     @And("select the displayed row on the table")

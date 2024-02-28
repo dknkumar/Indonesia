@@ -108,12 +108,14 @@ public class ProvisionsPage extends Page {
 
         waitForPageToLoad();
        //clickElement(By.xpath("//div//li//a[@href='#'][text()='2']"));
-        clickElement(By.xpath("//*[@id='controlled-tab-example-tabpane-business_view']/div/div/div[2]/div/div[3]/div[2]/ul/div/li[7]/a/span[1]"));
+//        clickElement(By.xpath("//*[@id='controlled-tab-example-tabpane-business_view']/div/div/div[2]/div/div[3]/div[2]/ul/div/li[7]/a/span[1]"));
 //        waitForPageToLoad();
-        clickElement(By.xpath("//*[@id='controlled-tab-example-tabpane-business_view']/div/div/div[2]/div/div[3]/div[2]/ul/div/li[6]/a/span[1]"));
-        clickElement(By.xpath("//*[@id='controlled-tab-example-tabpane-business_view']/div/div/div[2]/div/div[3]/div[2]/ul/div/li[2]"));
+//        clickElement(By.xpath("//*[@id='controlled-tab-example-tabpane-business_view']/div/div/div[2]/div/div[3]/div[2]/ul/div/li[6]/a/span[1]"));
+        clickElement(By.xpath("//*[@id='controlled-tab-example-tabpane-business_view']/div/div/div[2]/div/div[3]/div[2]/ul/div/li[3]"));
+        waitForPageToLoad();
+        clickElement(By.xpath("//*[@id='controlled-tab-example-tabpane-business_view']/div/div/div[2]/div/div[3]/div[2]/ul/div/li[4]"));
 //        waitForPageToLoad();
-        clickElement(By.xpath("//*[@id='controlled-tab-example-tabpane-business_view']/div/div/div[2]/div/div[3]/div[2]/ul/div/li[1]"));
+
 //
     }
 

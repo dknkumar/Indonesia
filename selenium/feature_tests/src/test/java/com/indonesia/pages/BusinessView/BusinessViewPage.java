@@ -255,7 +255,13 @@ public class BusinessViewPage extends Page {
         getElement(QtyProvID).sendKeys(QtyProv);
         clickElement(By.xpath("//*[@title='Toggle Row Selected'][1]"));
         clickElement(CBPBtn);
-        getElement(NameID).sendKeys("Bidding");
+        getElement(NameID).sendKeys("BBiddingg");
+        clickElement(Save);
+    }
+
+    public void enterQtyProv1() throws Exception {
+        waitForPageToLoad();
+        getElement(NameID).sendKeys("Narendra");
         clickElement(Save);
     }
 

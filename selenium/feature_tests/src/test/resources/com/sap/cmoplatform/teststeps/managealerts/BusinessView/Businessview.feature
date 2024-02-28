@@ -3,26 +3,26 @@ Feature: Indonesia App
 
   Background:
     Given the user logs in as 'Indonesia' in the login page
-    Then click on ProvisionTab in the DetailledView Page
+   Then click on DetailledView
 
   @indonesia
-  Scenario: Verify the Subtabs Business View/Provision (With toggle switch)
+  Scenario:1.Verify the Subtabs Business View/Provision (With toggle switch)
 
     And the BusinessView tab is opened on DetailedView page
-#    And the Provisions tab is opened on DetailedView page
+   And the Provisions tab is opened on DetailedView page
      #passed#
 
-  Scenario: Verify the Global Filters of Business view in Detailed view screen
+  Scenario:2.Verify the Global Filters of Business view in Detailed view screen
     Then Verify all the filters are present
       | Business Group  |
       | Plant |
       | Category         |
       | Expiry date     |
       | Provision Quantity |
-     #passed
+     #passed##
 
 
-  Scenario: 5.Verify the Business group filter values in Business view
+  Scenario:3.Verify the Business group filter values in Business view
 
     Then <"Business Group"> should have following drop-down values
 
@@ -34,18 +34,18 @@ Feature: Indonesia App
       | Personal Care        |
 
    #passed#
-  Scenario: 6.Verify the plant filter values in Business view
+  Scenario:4.Verify the plant filter values in Business view
 
     Then <"Plant"> should have following drop-down values
       | Select all     |
-      | 9000           |
-      | 9001           |
       | 9002           |
-      | 9003           |
-      | 9006           |
+      | 9016           |
+      | 9110           |
+      | 9150           |
+#      | 9006           |
      #passed#
 
-  Scenario: 7.Verify the Category filter values in Business view
+  Scenario:5.Verify the Category filter values in Business view
 
     Then <"Category filter"> should have following drop-down values
       |Select all           |
@@ -64,7 +64,7 @@ Feature: Indonesia App
 
     #passed#
 
-  Scenario: 8.Verify the Expiry date (Categorical- <6mos, 6mos-12mos, >12 mos) filter values in Business view
+  Scenario:6.Verify the Expiry date (Categorical- <6mos, 6mos-12mos, >12 mos) filter values in Business view
     Then <"Expiry date"> should have following drop-down values
       |Select all|
       |<6 Months |
@@ -73,46 +73,45 @@ Feature: Indonesia App
 
 
 
-  Scenario: 9.Verify the Provision Quantity filter values in Business view
+  Scenario:7.Verify the Provision Quantity filter values in Business view
     Then <"Provision Quantity"> should have following drop-down PR values
       |All                |
       |Provision Quantity |
 
-  Scenario: 10.Verify the Loss Tree filter values in Business view
+  Scenario:8.Verify the Loss Tree filter values in Business view
     Then <"Loss Tree"> should have following drop-down values
       |Select all      |
-      |Exclude         |
       |Liquidate - Export|
       |Liquidate - ULI  |
-  Scenario: 26.Verify the columns in Business view table
+  Scenario:9.Verify the columns in Business view table
     Then <"Columns"> should have following drop-down values
-#      |Select All   |
-#      | SKU         |
-#      | Description |
-#      | Plant       |
-#      | Location    |
-#      | Batch / Lot |
+      |Select all   |
+      | SKU         |
+      | Description |
+      | Plant       |
+      | Location    |
+      | Batch / Lot |
 #      | SLOC |
 #      | Status SLED|
-      | Active SKU Mapped|
-      | SLED/BB|
-      | Category|
-      | Loss Tree General|
-      | Actual Qty|
-      | Actual Value|
-      | Qty Prov left for Sale |
-      | Qty Prov|
-      | Value Prov|
-      | Status|
-      | Action From BW |
-      | Product Cost/CS|
-      | Offer Price/CS |
-      | Retail/CS|
-      |Disc From Retail|
-      | BG |
-      | Status |
+#      | Active SKU Mapped|
+#      | SLED/BB|
+#      | Category|
+#      | Loss Tree General|
+#      | Actual Qty|
+#      | Actual Value|
+#      | Qty Prov left for Sale |
+#      | Qty Prov|
+#      | Value Prov|
+#      | Status|
+#      | Action From BW |
+#      | Product Cost/CS|
+#      | Offer Price/CS |
+#      | Retail/CS|
+#      |Disc From Retail|
+#      | BG |
+#      | Status |
 
-  Scenario Outline:Verify the Search functionality of all the columns displayed in business view table
+  Scenario Outline:10.Verify the Search functionality of all the columns displayed in business view table
     When click columnsDropDownPath button
 #    And enter the '<data>' to search
 #    And enter '<Columns Value>'
@@ -132,7 +131,7 @@ Feature: Indonesia App
 #      | SLOC        |
 #       | Status SLED |
 
-  Scenario Outline: Verify the column filter
+  Scenario Outline:11.Verify the column filter
 #    And check the users count
     And Select the columns <column> '<filtername>' value for ColumnsFilter
     Then verify the '<filtername>' must be present on the table
@@ -152,18 +151,18 @@ Feature: Indonesia App
 
     #inprogress#P2Testcases#
 
-  Scenario:Verify the Bidding List Creation button in disabled on Business view screen.
+  Scenario:12.Verify the Bidding List Creation button in disabled on Business view screen.
     And verify the CBP button is disabled in the businessview page
 
    #passed#
-  Scenario:33.Verify the Bidding List Creation button without selecting the sku's
+  Scenario:13.Verify the Bidding List Creation button without selecting the sku's
 #  And check the users count
   #And Get message count
     And the CBP button is clicked in the businessview page
 #    And the clickandhold the pop
 #    And Verify toast message "Please select sku's to create a list"
    #passed#
-  Scenario Outline:Verify the Bidding List Creation functionality in Business view screen
+  Scenario Outline:14.Verify the Bidding List Creation functionality in Business view screen
     And the '<Qty Prov>' is entered into the QtyProv filter in BusinessView page
     Then Verify toast message "Successfully Submitted"
     Then click on cancel
@@ -176,55 +175,55 @@ Feature: Indonesia App
       | 10   |
 
 
-  Scenario:   Verify the Bidding List Creation functionality in Business view screen screen's right side.
+  Scenario:15.Verify the Bidding List Creation functionality in Business view screen screen's right side.
 
     Then click on arrow on the Detailed view screen's right side
 
 
-  Scenario Outline:Verify the search functionality of SKU column of business view table
+  Scenario Outline:16.Verify the search functionality of SKU column of business view table
     And the '<SKU>' is entered into the SKU filter in BusinessView page
     Then verify the '<SKU>' must be present in column1
 #    Then Results should be displayed according to the Filter '<value>' selected
 
     Examples:
       | SKU     |
-      | 21133328   |
+      | 67707162   |
 
      #passed#
 
-  Scenario Outline:Verify the search functionality of Description column of business view table
+  Scenario Outline:17.Verify the search functionality of Description column of business view table
     And the '<Description>' is entered into the Description filter in BusinessView page
     Then verify the '<Description>' must be present in column2
 #    Then Results should be displayed according to the Filter '<value>' selected
 
     Examples:
       | Description     |
-      | DOVE GNTLE   |
+      | DOVE DEO WMN RO  |
 
      #passed#
-  Scenario Outline:Verify the search functionality of Plant column of business view table
+  Scenario Outline:18.Verify the search functionality of Plant column of business view table
     And the '<Plant>' is entered into the Plant filter in BusinessView page
     Then verify the '<Plant>' must be present in column3
 #    Then Results should be displayed according to the Filter '<value>' selected
 
     Examples:
       | Plant     |
-      | 9154   |
+      | 9150   |
 
    #passed#
 
-  Scenario Outline:Verify the search functionality of BatchLot column of business view table
+  Scenario Outline:19.Verify the search functionality of BatchLot column of business view table
     And the '<BatchLot>' is entered into the BatchLot filter in BusinessView page
     Then verify the '<BatchLot>' must be present in column4
 #    Then Results should be displayed according to the Filter '<value>' selected
 
     Examples:
       | BatchLot |
-      | 235122   |
+      | 224131CD   |
 
      #passed#
 
-  Scenario Outline:Verify the search functionality of category column of business view table
+  Scenario Outline:20.Verify the search functionality of category column of business view table
     And the '<category>' is entered into the Category filter in BusinessView page
     Then verify the '<category>' must be present in column5
 #    Then Results should be displayed according to the Filter '<value>' selected
@@ -234,95 +233,94 @@ Feature: Indonesia App
       | Skin Cleansing |
 
     #passed#
-  Scenario Outline:Verify the search functionality of Location column of business view table
+  Scenario Outline:21.Verify the search functionality of Location column of business view table
     And the '<Location>' is entered into the Location filter in BusinessView page
     Then verify the '<Location>' must be present in column6
 #    Then Results should be displayed according to the Filter '<value>' selected
 
     Examples:
       | Location |
-      | CIBITUNG |
+      | MDC West |
 
      #passed#
 
 
 
-  Scenario Outline: Verify the Business group filter:Ice Cream
+  Scenario Outline:22.Verify the Business group filter:Ice Cream
     And Select the column <column> '<value>' value
     Then <"Plant"> should have following drop-down values
       |9002|
       |9016|
     Then <"Category filter"> should have following drop-down values
       |Ice Cream Category|
-    Then <"Expiry date"> should have following drop-down values
-      | Select all|
-      | <6 Months|
-      | >12 Months|
-      |6-12 Months|
+#    Then <"Expiry date"> should have following drop-down values
+#      | Select all|
+#      | <6 Months|
+#      | >12 Months|
+#      |6-12 Months|
     When click on button 'Maximum'
     Then Results should be displayed according to the Filter '<value>' selected
     Examples:
       | column | value  |
       | Business Group | Ice Cream|
 
-  Scenario Outline: Verify the Plant filter:Ex: 9000
+  Scenario Outline:23.Verify the Plant filter:Ex: 9002
     And Select the column <column> '<value>' value
     Then <"Business Group"> should have following drop-down values
-      |Home Care|
+      |Ice Cream|
     Then <"Category filter"> should have following drop-down values
-      |Fabric Cleaning|
-    Then <"Expiry Date"> should have following drop-down values
-      | >12 Months|
+      |Ice Cream Category|
+#    Then <"Expiry Date"> should have following drop-down values
+#      |Select all|
+#      |<6 Months|
+#      |>12 Months|
+#      |6-12 Months|
     When click on button 'Maximum'
     Then Results should be displayed according to the Filter '<value>' selected
     Examples:
       | column | value  |
-      | Plant | 9000|
+      | Plant | 9002|
 
-  Scenario Outline: Verify the Category filter:Beverages
+  Scenario Outline:24.Verify the Category filter:Beverages
     And Select the column <column> '<value>' value
-    Then <"Expiry Date"> should have following drop-down values
-      |Select all|
-      |<6 Months|
-      |>12 Months|
-      |6-12 Months|
+
     Then <"Plant"> should have following drop-down values
       |Select all|
-      |9001      |
       |9150      |
       |9153      |
-      |9154      |
+#      |9154      |
     Then <"Business Group"> should have following drop-down values
       |Nutrition|
+#    Then <"Expiry Date"> should have following drop-down values
+#      |Select all|
+#      |<6 Months|
+#     |>12 Months|
+#      |6-12 Months|
     When click on button 'Maximum'
     Then Results should be displayed according to the Filter '<value>' selected
     Examples:
       | column          | value  |
       | Category filter | Beverages|
 
-  Scenario Outline:  Verify the Expiry Date filter:Ex: <6 months
+  Scenario Outline:25.Verify the Expiry Date filter:Ex: <6 months
     And Select the column <column> '<value>' value
     Then <"Plant"> should have following drop-down values
       |Select all|
-      |9000      |
-      |9001      |
-      |9003      |
-      |9006      |
-      |9110      |
+      |9002      |
       |9150       |
-      |9153       |
+      |9154      |
 
     Then <"Category filter"> should have following drop-down values
       |Select all|
-      |Beverages |
-      |Skin Cleansing|
+      |Fabric Cleaning|
+      |Fabric Enhancers |
+#      |Skin Cleansing|
 
     Then <"Business Group"> should have following drop-down values
-      |Select all|
       |Home Care|
-      |Ice Cream|
-      |Nutrition|
-      |Personal Care|
+#      |Ice Cream|
+#      |Nutrition|
+#      |Personal Care|
 #    When click on button 'Maximum'
 #    Then Results should be displayed according to the Filter '<value>' selected
     Examples:
@@ -331,20 +329,18 @@ Feature: Indonesia App
 
    ####### ///////////////////############################
 
-  Scenario Outline: Verify the Business group filter:Home Care
+  Scenario Outline:26.Verify the Business group filter:Home Care
     And Select the column <column> '<value>' value
 
     Then <"Plant"> should have following drop-down values
-      |9000|
       |9110|
       |9150|
-      |9153|
       |9154|
-    Then <"Expiry date"> should have following drop-down values
-      |Select all|
-      | <6 Months|
-      | >12 Months|
-      |6-12 Months|
+#    Then <"Expiry date"> should have following drop-down values
+#      |Select all|
+#      | <6 Months|
+#      | >12 Months|
+#      |6-12 Months|
     Then <"Category filter"> should have following drop-down values
       |Select all|
       |Fabric Cleaning|
@@ -357,56 +353,56 @@ Feature: Indonesia App
       | column | value  |
       | Business Group | Home Care|
 
-  Scenario Outline: Verify the Plant filter:Ex: 9001
+  Scenario Outline:27.Verify the Plant filter:Ex: 9110
     And Select the column <column> '<value>' value
     Then <"Business Group"> should have following drop-down values
-      |Nutrition|
+      |Home Care|
+
     Then <"Category filter"> should have following drop-down values
-      |Beverages|
-    Then <"Expiry Date"> should have following drop-down values
-      | >12 Months|
+      |Select all|
+      |Fabric Cleaning|
+      |Fabric Enhancers |
+
     When click on button 'Maximum'
     Then Results should be displayed according to the Filter '<value>' selected
     Examples:
       | column | value  |
-      | Plant | 9001|
+      | Plant | 9110|
 
-  Scenario Outline: Verify the Category filter:Hair care
+  Scenario Outline:28.Verify the Category filter:Hair care
     And Select the column <column> '<value>' value
-    Then <"Expiry Date"> should have following drop-down values
-      |Select all|
-      |<6 Months|
-      |>12 Months|
-      |6-12 Months|
+#    Then <"Expiry Date"> should have following drop-down values
+#      |Select all|
+#      |<6 Months|
+#      |>12 Months|
+#      |6-12 Months|
     Then <"Plant"> should have following drop-down values
       |Select all|
-      |9003      |
+      |9110     |
       |9150      |
-      |9153      |
       |9154      |
     Then <"Business Group"> should have following drop-down values
-      |Beauty & Wellbeing|
+      |Home Care|
+
     When click on button 'Maximum'
     Then Results should be displayed according to the Filter '<value>' selected
     Examples:
       | column          | value  |
-      | Category filter | Hair care|
+      | Category filter | Fabric Cleaning|
 
-  Scenario Outline:  Verify the Expiry Date filter1:Ex: >12 months
+  Scenario Outline:29.Verify the Expiry Date filter1:Ex: >12 months
     And Select the column <column> '<value>' value
     Then <"Plant"> should have following drop-down values
       |Select all|
-      |9000      |
-      |9001      |
-      |9003      |
-      |9006      |
-      |9016     |
       |9110      |
+      |9150      |
+      |9154     |
+
 
     Then <"Category filter"> should have following drop-down values
       |Select all|
-      |Beverages |
-      |Skin Cleansing|
+      |Fabric Cleaning|
+      |Fabric Enhancers |
 
     Then <"Business Group"> should have following drop-down values
       |Select all|

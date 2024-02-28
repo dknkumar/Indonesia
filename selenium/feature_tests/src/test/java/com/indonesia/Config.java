@@ -90,6 +90,10 @@ public class Config {
     public Config(UI5Version version, ChromeOptions options) {
         this.setUi5Version(version);
         WebDriverManager.chromedriver().clearDriverCache().setup();
+        ChromeOptions k= new ChromeOptions();
+        k.addArguments("--headless");
+
+
         ChromeDriver driver = new ChromeDriver(options);
         driver.manage().timeouts().pageLoadTimeout(this.getPageLoadTimeout(), TimeUnit.SECONDS);
         driver.manage().window().setPosition(new Point(startX, startY));

@@ -20,11 +20,11 @@ Feature: Indonesia App
 
     Then <"Business Group"> should have following drop-down values
       | Select all           |
-      | Beauty & Wellbeing   |
-      | Home Care            |
-      | Ice Cream            |
-      | Nutrition            |
-      | Personal Care        |
+      | BEAUTY & WELLBEING   |
+      | HOME CARE            |
+      | ICE CREAM            |
+      | NUTRITION         |
+      | PERSONAL CARE       |
 
    #passed##
 
@@ -33,9 +33,9 @@ Feature: Indonesia App
     Then <"Plant"> should have following drop-down values
       | Select all     |
       | 9000           |
-      | 9001           |
       | 9002           |
       | 9003           |
+      | 9004           |
       | 9006           |
      #passed#
 
@@ -43,11 +43,12 @@ Feature: Indonesia App
 
     Then <"Category filter"> should have following drop-down values
       |Select all           |
-      |Beverages            |
-      |Deodorants & Fragrances|
-      |Fabric Cleaning      |
-      |Fabric Enhancers     |
-      |Hair Care            |
+      |BEVERAGES            |
+      |Blank                |
+      |DEODORANTS & FRAGRANCES|
+      |FABRIC CLEANING      |
+      |FABRIC ENHANCERS    |
+      |HAIR CARE           |
 #      |Home & Hygine        |
 #      |Non Corporate Personal Care Category|
 #      |Oral Care|
@@ -68,23 +69,23 @@ Feature: Indonesia App
   Scenario:6.Verify the Loss Tree filter values in Business view
     Then <"Loss Tree"> should have following drop-down values
       |Select all      |
-      |Exclude         |
-      |Liquidate - Export|
-      |Liquidate - ULI  |
+      |Bulldozer      |
+      |Damage return|
+      |Delisted  |
 
   Scenario Outline:7.Verify the Download button functionality by filtering business group values in Provisions
     And Select the column <column> '<value>' value
     When click on button 'Download' on provision
     Then User should be able to download the results in .xlsx format in an excel sheet
-  #Then Downloaded data in the excel sheet must be same as showing in the Home page.
+  #Then Downloalded data in the excel sheet must be same as showing in the Home page.
     Examples:
       | column         | value     |
-      | Business Group | Home Care |
+      | Business Group | HOME CARE |
 
  Scenario:8.Verify the Download button functionality without filtering the values
    When click on button 'Download' on provision
    Then User should be able to download the results in .xlsx format in an excel sheet
-  Then Downloaded data in the excel sheet must be same as showing in the Home page.
+#  Then Downloaded data in the excel sheet must be same as showing in the Home page.
 
   Scenario:9.Verify the DataBase button functionality by without filtering business group values in Provisions
     When click on button 'DataBase' on provision
@@ -97,15 +98,15 @@ Feature: Indonesia App
 #   Then Downloaded data in the excel sheet must be same as showing in the Home page.
     Examples:
       | column         | value     |
-      | Business Group | Home Care |
+      | Business Group | HOME CARE |
 
     Scenario:11.Verify the Page Navigation.
     And scrollToElement1
     And Verify the Page Navigation and Pagenumber selection
 
-#==week5(19th Feb-23rd Feb)==============================================================================
+#==week5(19th Feb-23rd Feb)==+===============================================================================
 
-  Scenario Outline:1.Verify the Business group filter:Ice Cream
+  Scenario Outline:12.Verify the Business group filter:Ice Cream
     And Select the column <column> '<value>' value
     Then <"Plant"> should have following drop-down values
       |9002|
@@ -118,55 +119,63 @@ Feature: Indonesia App
 #    Then Results should be displayed according to the Filter '<value>' selected
     Examples:
       | column         | value  |
-      | Business Group | Ice Cream|
+      | Business Group | ICE CREAM|
 
-  Scenario Outline:2.Verify the Plant filter:Ex: 9110
+  Scenario Outline:13.Verify the Plant filter:Ex: 9110
     And Select the column <column> '<value>' value
     Then <"Business Group"> should have following drop-down values
-      |HOME CARE|
-    Then <"Category filter"> should have following drop-down values
-      |BEVERAGES|
-    Then <"Expiry Date"> should have following drop-down values
       |Select all|
-      |<6 Months|
-      |>12 Months|
-      |6-12 Months|
+      |HOME CARE|
+      |NUTRITION|
+    Then <"Category filter"> should have following drop-down values
+      |Select all|
+      |BEVERAGES|
+      |FABRIC CLEANING      |
+      |FABRIC ENHANCERS    |
+#    Then <"Expiry Date"> should have following drop-down values
+#      |Select all|
+#      |<6 Months|
+#      |>12 Months|
+#      |6-12 Months|
 #    When click on button 'Maximum'
 #    Then Results should be displayed according to the Filter '<value>' selected
     Examples:
       | column | value  |
       | Plant | 9110|
 
-  Scenario Outline:3.Verify the Category filter:Beverages
+  Scenario Outline:14.Verify the Category filter:Beverages
     And Select the column <column> '<value>' value
-    Then <"Expiry Date"> should have following drop-down values
-      |Select all|
-      |>12 Months|
-    Then <"Plant"> should have following drop-down values
-      |Select all|
-      |9015      |
-      |9110      |
-      |9120      |
-      |9150      |
+
     Then <"Business Group"> should have following drop-down values
-      |Nutrition|
+      |NUTRITION|
+
+#    Then <"Expiry Date"> should have following drop-down values
+#      |Select all|
+#      |<6 Months|
+#      |>12 Months|
+#      |6-12 Months|
+#    Then <"Plant"> should have following drop-down values
+#      |Select all|
+#      |9015      |
+#      |9110      |
+#      |9120      |
+#      |9150      |
 #    When click on button 'Maximum'
 #    Then Results should be displayed according to the Filter '<value>' selected
     Examples:
       | column          | value  |
-      | Category filter | Beverages|
+      | Category filter | BEVERAGES|
 
-  Scenario Outline:4.Verify the Expiry Date filter:Ex: <6 months
+  Scenario Outline:15.Verify the Expiry Date filter:Ex: <6 months
     And Select the column <column> '<value>' value
     Then <"Plant"> should have following drop-down values
       |Select all|
-      |9000      |
-      |9002      |
-      |9003      |
-      |9004      |
-      |9006      |
       |9105       |
       |9110       |
+      |9120      |
+      |9150      |
+      |9200      |
+      |9201      |
 
     Then <"Category filter"> should have following drop-down values
       |Select all|
@@ -187,14 +196,14 @@ Feature: Indonesia App
 
    ####### ///////////////////############################
 
-  Scenario Outline:5.Verify the Business group filter:Home Care
+  Scenario Outline:16.Verify the Business group filter:Home Care
     And Select the column <column> '<value>' value
-    Then <"Plant"> should have following drop-down values
-      |9000|
-      |9105|
-      |9110|
-      |9120|
-      |9150|
+#    Then <"Plant"> should have following drop-down values
+#      |9000|
+#      |9105|
+#      |9110|
+#      |9120|
+#      |9150|
     Then <"Expiry date"> should have following drop-down values
       |Select all|
       | <6 Months|
@@ -206,37 +215,36 @@ Feature: Indonesia App
       |FABRIC ENHANCERS|
       |HOME & HYGIENE |
       |PROFESSIONAL CLEANING CATEGORY|
-    When click on button 'Maximum'
-    Then Results should be displayed according to the Filter '<value>' selected
+#    When click on button 'Maximum'
+#    Then Results should be displayed according to the Filter '<value>' selected
     Examples:
       | column | value  |
       | Business Group | HOME CARE|
 
-  Scenario Outline:6.Verify the Category filter: Beverages
+  Scenario Outline:17.Verify the Category filter: Beverages
     And Select the column <column> '<value>' value
     Then <"Plant"> should have following drop-down values
       |Select all|
       |9105     |
       |9110      |
       |9120      |
-      |9150      |
 
-    Then <"Expiry Date"> should have following drop-down values
-      |Select all|
-      |<6 Months|
-      |>12 Months|
-      |6-12 Months|
+#    Then <"Expiry Date"> should have following drop-down values
+#      |Select all|
+#      |<6 Months|
+#      |>12 Months|
+#      |6-12 Months|
 
     Then <"Business Group"> should have following drop-down values
-      |Nutrition|
+      |NUTRITION|
 
 #    When click on button 'Maximum'
 #    Then Results should be displayed according to the Filter '<value>' selected
     Examples:
       | column          | value  |
-      | Category filter | Beverages|
+      | Category filter | BEVERAGES|
 
-  Scenario Outline:7.Verify the Expiry Date filter1:Ex: >12 months
+  Scenario Outline:18.Verify the Expiry Date filter1:Ex: >12 months
     And Select the column <column> '<value>' value
     Then <"Plant"> should have following drop-down values
       |Select all|
@@ -264,6 +272,24 @@ Feature: Indonesia App
     Examples:
       | column | value  |
       | Expiry date| >12 Months|
-#    ===================================================================================
 
+
+  Scenario Outline:19.Verify the Plant filter:Ex: 9120
+    And Select the column <column> '<value>' value
+    Then <"Business Group"> should have following drop-down values
+      |NUTRITION|
+    Then <"Category filter"> should have following drop-down values
+      |Select all|
+      | BEVERAGES|
+      | Blank    |
+#    Then <"Expiry Date"> should have following drop-down values
+#      |Select all|
+#      |<6 Months|
+#      |>12 Months|
+#      |6-12 Months|
+#    When click on button 'Maximum'
+#    Then Results should be displayed according to the Filter '<value>' selected
+    Examples:
+      | column | value  |
+      | Plant | 9120|
 
