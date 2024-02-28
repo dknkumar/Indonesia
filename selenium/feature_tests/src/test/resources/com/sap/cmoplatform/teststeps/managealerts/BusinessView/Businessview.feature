@@ -1,4 +1,4 @@
-@indonesia @businessviewP1TCs-28th
+@businessviewP1TCs
 Feature: Indonesia App
 
   Background:
